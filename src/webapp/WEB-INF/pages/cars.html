@@ -14,10 +14,10 @@
       <th>series</th>
       <th>price</th>
     </tr>
-    <tr th:each="list1 : ${list}">
-      <td th:utext="${list1.model}">model</td>
-      <td th:utext="${list1.series}">series</td>
-      <td th:utext="${list1.price}">price</td>
+    <tr th:each="list : ${list}">
+      <td th:utext="${list.model}">model</td>
+      <td th:utext="${list.series}">series</td>
+      <td th:utext="${list.price}">price</td>
     </tr>
   </table>
 </div>

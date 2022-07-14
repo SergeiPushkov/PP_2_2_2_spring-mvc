@@ -14,20 +14,17 @@ import java.util.List;
 @Controller
 public class CarController {
 
+    private final CarService carService;
     @Autowired
-    private CarService carService;
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
 
     @GetMapping(value = "/cars")
     public String sayCar(@RequestParam(value = "count",defaultValue = "5")int count, Model model) {
-        List<Car> list = new ArrayList<>();
-        list.add(new Car("BMW",5,500000));
-        list.add(new Car("Audi",7,1000000));
-        list.add(new Car("Mersedes",222,200000));
-        list.add(new Car("Lada",5,50000));
-        list.add(new Car("Porshe",2,800000));
-        list = carService.getCarsList(list,count);
-        model.addAttribute("list",list);
+        List<Car> list = carService.getCarsList(count);
+        model.addAttribute("list", list);
         return "cars";
     }
 }
